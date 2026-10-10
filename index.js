@@ -21,3 +21,22 @@ function toggle(){
     document.getElementById("userimage").src=users[index].image;
 
 }
+
+function random(){
+    fetch("https://randomuser.me/api")
+    .then(function(rawData){
+         return rawData.json();
+    })
+    .then(function(jsonData){
+
+        var user=jsonData.results[0];
+        var gender =user.gender;
+        var img=user.picture.thumbnail;
+        var fullName = user.name.title+" "+user.name.first+" "+user.name.last;
+        document.getElementById("username").innerText=fullName;
+        document.getElementById("usergender").innerText=gender;
+        document.getElementById("userimage").src=img;
+
+
+    })
+}
